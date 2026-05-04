@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengekalkulator Skisse</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="calc-wrapper">
+        <header class="display-section">
+            <div class="display-box money-box">
+                <span class="label">PENGER</span>
+                <div class="value">0</div>
+            </div>
+            <div class="display-box time-box">
+                <span class="label">TID</span>
+                <div class="value">00.00.0000</div>
+            </div>
+        </header>
+
+        <hr class="divider">
+
+        <section class="input-row">
+            <div class="input-item">
+                <label>START</label>
+                <input type="number" placeholder="0" id="start">
+            </div>
+            <div class="input-item">
+                <label>ØKNING I %(ÅRLIG)</label>
+                <input type="number" placeholder="0" id="increase">
+            </div>
+            <div class="input-item">
+                <label>INNSKUDD</label>
+                <input type="number" placeholder="0" id="inskudd">
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="presets-container">
+            <h2>PRESETS</h2>
+            <div class="preset-grid">
+                <button>Indexfond</button>
+                <button>Bank Rente</button>
+                <button>Oljefondet</button>
+                <button>Aksjefond</button>
+            </div>
+        </section>
+
+        <footer class="simulation-time">
+            <h3>Simulasjonstid</h3>
+            <div class="time-buttons">
+                <button>5år</button>
+                <button>10år</button>
+                <button>20år</button>
+                <button>50år</button>
+                <input type="number" id="custom-year" placeholder="0">
+            </div>
+        </footer>
+        <button class="start">START</button>
+    </div>
+    <script type="module" src="app.js"></script>
+</body>
+</html>
