@@ -18,45 +18,47 @@ window.onload = function() {
 
 let difficultyCounter = 0
 const difficultyBtnEl = document.getElementById("difficulty-btn")
-const boardEl = document.getElementById("board")
+const boardEl = document.getElementById("board");
 
 function setDifficulty() {
+    difficultyCounter++;
+    if (difficultyCounter > 3) difficultyCounter = 0;
+
+    const btn = document.getElementById("difficulty-btn");
+
     if (difficultyCounter == 0) {
-        difficultyCounter ++
-        difficultyBtnEl.innerText = "Intermediate"
-        difficultyBtnEl.style.backgroundColor = "gold"
-        rows = 16 
-        columns = 16 
-        minesCount = 40
+        btn.innerText = "Beginner";
+        btn.style.backgroundColor = "green";
+        rows = 8; columns = 8; minesCount = 10;
+    } else if (difficultyCounter == 1) {
+        btn.innerText = "Intermediate";
+        btn.style.backgroundColor = "gold";
+        rows = 16; columns = 16; minesCount = 40;
+    } else if (difficultyCounter == 2) {
+        btn.innerText = "Hard";
+        btn.style.backgroundColor = "red";
+        rows = 16; columns = 30; minesCount = 99;
+    } else if (difficultyCounter == 3) {
+        btn.innerText = "Expert";
+        btn.style.backgroundColor = "#780606";
+        rows = 20; columns = 40; minesCount = 150;
     }
-    else if (difficultyCounter == 1) {
-        difficultyCounter ++
-        difficultyBtnEl.innerText = "Hard"
-        difficultyBtnEl.style.backgroundColor = "red"
-        rows = 16
-        columns = 30 
-        minesCount = 99
-    }
-    else if (difficultyCounter == 2) {
-        difficultyCounter ++
-        difficultyBtnEl.innerText = "Expert"
-        difficultyBtnEl.style.backgroundColor = "#780606"
-        rows = 20
-        columns = 40 
-        minesCount = 150
-        difficultyBtnEl.style.position = "block"
-    }
-    else {
-        difficultyCounter = 0
-        difficultyBtnEl.innerText = "Beginner"
-        difficultyBtnEl.style.backgroundColor = "green"
-        rows = 8;
-        columns = 8;
-        minesCount = 10;
-    }
-    boardEl.style.gridTemplateColumns = `repeat(${columns}, 50px)`;
-    boardEl.style.gridTemplateRows = `repeat(${rows}, 50px)`;
+    
     restartGame();
+}
+
+function restartGame() {
+    boardEl.innerHTML = "";
+    // Oppdater grid-oppsettet basert på nye rader/kolonner
+    boardEl.style.gridTemplateColumns = `repeat(${columns}, 40px)`;
+    
+    board = [];
+    minesLocation = [];
+    tilesClicked = 0;
+    gameOver = false;
+    document.getElementById("mines-count").innerText = minesCount;
+    
+    startGame();
 }
 
 function setMinesLoc() {
@@ -207,13 +209,4 @@ function checkTile(r, c) {
         return 1;
     }
     return 0;
-}
-
-function restartGame() {
-    boardEl.innerHTML = "";
-    board = [];
-    minesLocation = [];
-    tilesClicked = 0;
-    gameOver = false;
-    startGame();
 }

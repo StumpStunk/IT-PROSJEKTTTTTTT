@@ -1,13 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Hello World</h1>
-    <script src="script.js"></script>
-</body>
+<!doctype html>
+
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Spillhub</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="nav.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <nav>
+      <h1>Spillhub</h1>
+      <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false">
+        <span class="menu-icon">☰</span>
+      </button>
+      <ul class="nav-links">
+        <li><a href="minesweeper/index.html">Minesweeper</a></li>
+        <li><a href="wordle/index.html">Wordle</a></li>
+        <li><a href="Penge kalkulator/index.html">Pengekalkulator</a></li>
+      </ul>
+    </nav>
+    <div class="page">
+      <header class="top">
+        <h1 class="title">Spillhub</h1>
+        <p class="lead">Velg et spill!</p>
+      </header>
+      <main class="games">
+        <a class="card" href="minesweeper/index.html" style="animation-delay: 0.2s;">
+          <span class="card-name">Minesweeper</span>
+        </a>
+        <a class="card" href="wordle/index.html" style="animation-delay: 0.4s;">
+          <span class="card-name">Wordle</span>
+        </a>
+        <a class="card" href="Penge kalkulator/index.html" style="animation-delay: 0.6s;">
+          <span class="card-name">Pengekalkulator</span>
+        </a>
+      </main>
+    </div>
+    <script src="common.js"></script>
+  </body>
 </html>

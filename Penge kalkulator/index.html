@@ -5,9 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pengekalkulator Skisse</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-
+    <nav>
+        <h1>Spillhub</h1>
+        <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false">
+            <span class="menu-icon">☰</span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="../index.html">Hjem</a></li>
+          <li><a href="../minesweeper/index.html">Minesweeper</a></li>
+          <li><a href="../wordle/index.html">Wordle</a></li>
+          <li><a href="../Penge kalkulator/index.html">Pengekalkulator</a></li>
+        </ul>
+      </nav>
     <div class="calc-wrapper">
         <header class="display-section">
             <div class="display-box money-box">
@@ -62,5 +75,6 @@
         <button class="start">START</button>
     </div>
     <script type="module" src="app.js"></script>
+    <script src="../common.js"></script>
 </body>
 </html>

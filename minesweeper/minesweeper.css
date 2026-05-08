@@ -1,84 +1,99 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    text-align: center;
-    min-height: 100vh;
-    overflow-x: auto; /* Adds a scrollbar if the board is wider than the screen */
-    padding: 20px;
-} 
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: MidnightBlue;
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 #board {
-    display: grid;
-    border: 10px solid darkgray;
-    margin: 0 auto;
-    min-width: none!important;
+  display: grid;
+  border: 8px solid rgb(130, 130, 130);
+  background-color: rgb(130, 130, 130);
+  margin: 0 auto;
+  gap: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 #board div {
-    width: 50px; 
-    height: 50px; 
-    border: 1px solid whitesmoke;
-    box-sizing: border-box;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  border: 3px solid;
+  border: solid black 1px;
+  background-color: lightgray;
+  box-sizing: border-box;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-.tile-clicked {
-    background-color: darkgray;
+#board .tile-clicked {
+  border: 1px solid rgb(130, 130, 130);
+  background-color: rgb(190, 190, 190);
 }
 .x1 {
-    color: blue;
+  color: blue;
 }
 .x2 {
-    color: green;
+  color: green;
 }
 .x3 {
-    color: red;
+  color: red;
 }
 .x4 {
-    color: navy;
+  color: navy;
 }
 .x5 {
-    color: brown;
+  color: brown;
 }
 .x6 {
-    color: teal;
+  color: teal;
 }
 .x7 {
-    color: black;
+  color: black;
 }
 .x8 {
-    color: gray;
+  color: gray;
 }
-#flag-btn {
-    width: 200px;
-    height: 100px;
-    font-size: 30px;
-    border-radius: 10px;
-    position: absolute;
-    top: 4px;
-    left: 63%;
-    background-color: lightgray;
-    border: solid 2px;
+.game-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.control-panel {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.controlpanel button {
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 8px;
+  border: 3px solid black;
+  cursor: pointer;
+}
+
 #difficulty-btn {
-    background-color: green;
-    width: 200px;
-    height: 100px;
-    font-size: 30px;
-    border-radius: 10px;
-    position: absolute;
-    top: 4px;
-    left: 10%;
-    border: solid 2px;
+  background-color: green;
+  color: white;
 }
 #reset-btn {
-    width: 200px;
-    height: 100px;
-    font-size: 30px;
-    position: absolute;
-    top: 4px;
-    left: 25%;
-    border-radius: 10px;
-    border: solid 2px;
+  background-color: lightgray;
+}
+#flag-btn {
+  background-color: lightgray;
+}
+@media (max-width: 600px) {
+  #board {
+    overflow: auto;
+    max-width: 100%;
+  }
 }

@@ -1,24 +1,77 @@
-const pengeScreenEl = document.querySelector(".money-box .value")
-const timeEl = document.querySelector(".time-box .value")
-const inputEls = document.querySelectorAll(".input-item input")
-const presetEls = document.querySelectorAll(".preset-grid button")
-const timeButtonEls = document.querySelectorAll(".time-buttons button")
-const timeInputEl = document.querySelectorAll(".time-buttons button")
+const pengeScreenEl = document.querySelector(".money-box .value");
+const timeEl = document.querySelector(".time-box .value");
+const inputEls = document.querySelectorAll(".input-item input");
+const presetEls = document.querySelectorAll(".preset-grid button");
+const timeButtonEls = document.querySelectorAll(".time-buttons button");
+const customYearEl = document.querySelector("#custom-year");
+const startBtn = document.querySelector(".start");
 
-let penger = 0
-let time = 0
-let inc = 0
-let innskudd = 0
+const presetVerdier = [1.07, 1.04, 1.06, 1.09];
+const årPresets = [5, 10, 20, 50];
 
-presetEls.forEach((e, idx)=> {
-    if (idx = 0){e.value = 1.04}
-    else if (idx = 1){e.value = 1.07}
-    else if (idx = 2){e.value = 1.09}
-    else {e.value = 1.06}
-})
+let simulationIntervalId = null;
 
-document.querySelector(".start").addEventListener("click",() => {
-    penger = inputEls[0].value 
-    inc = inputEls[1].value
-    innskudd = inputEls[2].value
-}) 
+presetEls.forEach((btn, idx) => {
+  btn.addEventListener("click", () => {
+    const prosent = (presetVerdier[idx] - 1) * 100;
+    inputEls[1].value = prosent.toFixed(1);
+    presetEls.forEach((b) => {
+      b.style.borderColor = "navy";
+    });
+    btn.style.borderColor = "gold";
+  });
+});
+
+timeButtonEls.forEach((btn, idx) => {
+  btn.addEventListener("click", () => {
+    customYearEl.value = String(årPresets[idx]);
+    timeButtonEls.forEach((b) => {
+      b.style.borderColor = "navy";
+    });
+    btn.style.borderColor = "gold";
+  });
+});
+
+startBtn.addEventListener("click", () => {
+  if (simulationIntervalId !== null) {
+    clearInterval(simulationIntervalId);
+    simulationIntervalId = null;
+  }
+
+  let nåværendePenger = Number(document.querySelector("#start").value) || 0;
+  const renteFaktor =
+    1 + Number(document.querySelector("#increase").value) / 100;
+  const månedligInnskudd =
+    Number(document.querySelector("#inskudd").value) || 0;
+  const målAr = Number(customYearEl.value);
+
+  if (!målAr || målAr < 1) {
+    alert("Velg antall år (knapp eller eget tall) først!");
+    return;
+  }
+
+  let år = 0;
+  pengeScreenEl.textContent = "0 kr";
+  timeEl.textContent = "0 år";
+
+  simulationIntervalId = setInterval(() => {
+    år += 1;
+    nåværendePenger += månedligInnskudd * 12;
+    nåværendePenger *= renteFaktor;
+
+    pengeScreenEl.textContent =
+      Math.floor(nåværendePenger).toLocaleString("no-NO") + " kr";
+    timeEl.textContent = år + " år";
+
+    pengeScreenEl.style.transform = "scale(1.1)";
+    setTimeout(() => {
+      pengeScreenEl.style.transform = "scale(1)";
+    }, 60);
+
+    if (år >= målAr) {
+      clearInterval(simulationIntervalId);
+      simulationIntervalId = null;
+      pengeScreenEl.style.color = "gold";
+    }
+  }, 50);
+});

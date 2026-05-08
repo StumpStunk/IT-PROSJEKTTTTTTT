@@ -1,12 +1,118 @@
-body {
-    background-color: white;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+:root {
+  --bakgrunn: MidnightBlue;
+  --kort-farge: RoyalBlue;
+  --kort-hover: DodgerBlue;
+  --tekst-hoved: White;
+  --tekst-sekunder: LightCyan;
+  --accent: Gold;
 }
 
-h1 {
-    color: #333;
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(circle, MidnightBlue 0%, Black 100%);
+  background-attachment: fixed;
+}
+
+body {
+  color: var(--tekst-hoved);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.top {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  margin: 0;
+  font-size: 60px;
+  letter-spacing: 5px;
+  color: var(--accent);
+}
+
+.lead {
+  font-size: 20px;
+  color: var(--tekst-sekunder);
+  opacity: 0.8;
+  margin-top: 10px;
+}
+
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20px;
+  border-radius: 20px;
+  background-color: rgb(30, 30, 109);
+
+  color: var(--tekst-hoved);
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  text-align: center;
+}
+
+.card:hover {
+  cursor: pointer;
+  border-color: var(--accent);
+}
+
+.card-name {
+  font-size: 28px;
+  font-weight: 900;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.card-hint {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+.card-soft {
+  background-color: rgba(47, 79, 79, 0.3);
+}
+
+.card-soft .card-hint {
+  color: SpringGreen;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
+
+.card {
+  animation: fadeIn 0.8s ease forwards;
 }

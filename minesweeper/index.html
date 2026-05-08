@@ -1,19 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="no">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Minesweeper</title>
-    <link rel="stylesheet" href="minesweeper.css">
+    <link rel="stylesheet" href="minesweeper.css" />
+    <link rel="stylesheet" href="../nav.css" />
 </head>
 <body>
-    <h1>Mines: <span id="mines-count">0</span></h1>
-    <div id="board">
+    <nav>
+        <h1>Spillhub</h1>
+        <button class="menu-toggle" aria-label="Åpne meny" aria-expanded="false">
+            <span class="menu-icon">☰</span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="../index.html">Hjem</a></li>
+            <li><a href="../minesweeper/index.html">Minesweeper</a></li>
+            <li><a href="../wordle/index.html">Wordle</a></li>
+            <li><a href="../Penge kalkulator/index.html">Pengekalkulator</a></li>
+        </ul>
+    </nav>
+
+    <div class="game-container">
+        <h1>Miner: <span id="mines-count">0</span></h1>
+        
+        <div class="control-panel">
+            <button onclick="setDifficulty()" id="difficulty-btn">Beginner</button>
+            <button onclick="restartGame()" id="reset-btn">Restart</button>
+            <button id="flag-btn" onclick="setFlag()">🚩</button>
+        </div>
+
+        <div id="board"></div>
     </div>
-    <br>
-    <button id="flag-btn" onclick="setFlag()">🚩</button>
-    <button onclick="setDifficulty()" id="difficulty-btn">Beginner</button>
-    <button onclick="restartGame()" id="reset-btn">Restart</button>
+
     <script src="minesweeper.js"></script>
+    <script src="../common.js"></script>
 </body>
 </html>
