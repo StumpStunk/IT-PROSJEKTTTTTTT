@@ -52,7 +52,7 @@ body {
 
 .games {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: 30px;
 }
 
@@ -84,22 +84,8 @@ body {
   letter-spacing: 1px;
 }
 
-.card-hint {
-  font-size: 14px;
-  text-transform: uppercase;
-  color: var(--accent);
-  font-weight: bold;
-  letter-spacing: 2px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 15px;
-}
-
 .card-soft {
   background-color: rgba(47, 79, 79, 0.3);
-}
-
-.card-soft .card-hint {
-  color: SpringGreen;
 }
 
 @keyframes fadeIn {
